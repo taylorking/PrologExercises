@@ -16,7 +16,8 @@ partition([N|T], P, PA, PB) :- N > P, partition(T, P, PA, PB1), append([N], PB1,
 % 3. Quicksort
 qs(N, P, R) :- partition(N, P, PA, PB), quick_sort(PA, RA), quick_sort(PB,RB), append(RA, P, R1), append(R1, RB, R).
 % actually do it I'm gonna wrap this method
-quick_sort([X|Rest], R) :- partition(Rest, X, PA, PB), quick_sort(PA, RA), quick_sort(PB, RB), append(RA, [X], R1), append(R1, RB, R).quick_sort([], []).
+quick_sort([X|Rest], R) :- partition(Rest, X, PA, PB), quick_sort(PA, RA), quick_sort(PB, RB), append(RA, [X], R1), append(R1, RB, R).
+quick_sort([], []).
 
 
 % 4. Mini
