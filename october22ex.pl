@@ -37,8 +37,20 @@ keepthree([A,B,C], [A,B,C]).
 % 6. The append procedure seems to be called 4 times in the reverse function, I don't think this is particularly inefficient..
 % If you're going to do this in java, one might do the same thing. 
 
+% 7. 
+
 rev2(X,Y) :- rev2recursive(X, [], Y).
 rev2recursive([], Solution, Solution).
 rev2recursive([H|T], Partial, Z) :- rev2recursive(T, [H|Partial], Z).
 
+% Neat! 
+
+% 8.Insertion Sort
+insert_sort(N, R) :- insert_s(N, [], R).
+insert_s([T|N],A, R) :- insert(T, A, [], AB), insert_s(N, AB, R). 
+insert_s([], A, A).
+insert(N, [T|PI], PR, PF) :- T > N, append(PR, [N], D), append(D,[T], DA), append(DA, PI, PF).
+insert(N, [T|PI], PR, PF) :- N >= T, append(PR, [T], PN), insert(N, PI, PN, PF).
+insert(N, [], PR, PF) :- append(PR, [N], PF).
+=======
 
